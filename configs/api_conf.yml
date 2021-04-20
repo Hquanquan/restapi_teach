@@ -1,0 +1,40 @@
+# 接口数据模板，对应接口的className要相同
+
+# 基类，不需要使用
+BaseAPI:
+  path: /
+  add: {}
+  edit: {}
+  delete: {}
+  list: {}
+
+CourseAPI:
+  path: "/api/mgr/sq_mgr/"
+  add: {
+      "action": "add_course",
+      "data": {
+          "name": "初中化学",
+          "desc": "描述初中化学课程",
+          "display_idx": "10"
+      }
+  }
+  edit: {
+        "action": "modify_course",
+        "id": 100,
+        "newdata": {
+             "name": "新初中化学",
+             "desc": "描述新初中化学课程",
+             "display_idx": 100
+        }
+  }
+  list: {
+        "action": "list_course",
+        "pagenum": 1,
+        "pagesize": 20
+  }
+  delete: {
+        "action": "delete_course",
+        "id": 100
+  }
+
+

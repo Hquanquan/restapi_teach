@@ -7,9 +7,9 @@
 # @Desc    : 培训班期管理api
 import json
 import requests
-from configs.api_config import HOST
-from pylib.APIlib.loginAPI import LoginAPI
-from pylib.APIlib.trainingAPI import TrainingAPI
+from configs.api_env import HOST
+from pylib.APIlib1.loginAPI import LoginAPI
+from pylib.APIlib1.trainingAPI import TrainingAPI
 
 class TrainingGradeAPI:
     """

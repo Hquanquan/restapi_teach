@@ -7,11 +7,11 @@
 # @Desc    : 教师管理API
 import requests
 
-from configs.api_config import HOST
+from configs.api_env import HOST
 import json
 
-from pylib.APIlib.courseAPI import CourseAPI
-from pylib.APIlib.loginAPI import LoginAPI
+from pylib.APIlib1.courseAPI import CourseAPI
+from pylib.APIlib1.loginAPI import LoginAPI
 
 
 class TeacherAPI:

@@ -9,10 +9,10 @@
 import requests
 import json
 
-from configs.api_config import HOST
-from pylib.APIlib.loginAPI import LoginAPI
-from pylib.APIlib.trainingAPI import TrainingAPI
-from pylib.APIlib.training_gradeAPI import TrainingGradeAPI
+from configs.api_env import HOST
+from pylib.APIlib1.loginAPI import LoginAPI
+from pylib.APIlib1.trainingAPI import TrainingAPI
+from pylib.APIlib1.training_gradeAPI import TrainingGradeAPI
 
 
 class StudentAPI:
