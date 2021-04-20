@@ -4,7 +4,7 @@
 # @File : courseAPI.py 
 # @Author  : 黄权权
 # @Software: PyCharm
-# @Desc    : None
+# @Desc    : CourseAPI 继承BaseAPI类
 
 from pylib.APIlib.baseAPI import BaseAPI
 

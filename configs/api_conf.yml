@@ -2,12 +2,13 @@
 
 # 基类，不需要使用
 BaseAPI:
-  path: /
+  path: "/api/mgr/sq_mgr/"
   add: {}
   edit: {}
   delete: {}
   list: {}
 
+# 课程类接口数据模板
 CourseAPI:
   path: "/api/mgr/sq_mgr/"
   add: {
@@ -36,5 +37,27 @@ CourseAPI:
         "action": "delete_course",
         "id": 100
   }
+
+# 教师类接口数据模板
+TeacherAPI:
+  path: "/api/mgr/sq_mgr/"
+  add: {
+      "action": "add_teacher",
+      "data": {
+            "username": "username",
+            "password": "123456",
+            "realname": "realname",
+            "desc": "描述字段",
+            "display_idx": 100,
+            "courses":[],
+      }
+  }
+  edit: {}
+  list: {
+      "action": "list_teacher",
+      "pagenum": 1,
+      "pagesize": 20
+  }
+  delete: {}
 
 

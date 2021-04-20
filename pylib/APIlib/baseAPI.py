@@ -24,9 +24,9 @@ class BaseAPI:
         # 自定义 读取yaml文件内容 函数
         api_template = read_yaml(filePath)
         # 获取当前类的类名，便于根据类名读取yaml文件里的模板数据
-        current_className = self.__class__.__name__
+        self.current_className = self.__class__.__name__
         # 根据当前类名获取yaml文件接口数据模板
-        self.conf = api_template[current_className]
+        self.conf = api_template[self.current_className]
         self.path = self.conf["path"]
 
     def add(self, **kwargs):
@@ -37,10 +37,11 @@ class BaseAPI:
         """
         # 读取配置文件模板中-add的内容
         data = self.conf["add"]
-        # 把字典类型的参数更新到data中
-        data.update(kwargs)
         # 判断data字典是否为空，不为空则执行下面的语句。为空则跳过
         if bool(data):
+            # 把字典类型的参数更新到data中
+            data["data"].update(kwargs)
+            # 把data["data"]字典转换成json字符串
             data["data"] = json.dumps(data["data"], ensure_ascii=False)
         payload = data
         url = self.host + self.path
@@ -111,6 +112,14 @@ class BaseAPI:
         else:
             return "接口返回错误!!!"
 
+    def delete_all(self, **kwargs):
+        """
+        删除第一页所有的数据
+        :param kwargs:  pagenam=1, pagesize=20
+        :return:
+        """
+        infos = self.list(**kwargs)["retlist"]
+        for info in infos:
+            self.delete(info["id"])
 
-class CourseAPI(BaseAPI):
-    pass
+
