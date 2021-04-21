@@ -57,7 +57,7 @@ for course in coursesInfo:
     courseInfo.append(course_dict)
 
 
-info = teacherApi.add(username="9527-**", realname="9527-**", courses=courseInfo)
+info = teacherApi.add(username="9527-*1*", realname="9527-**", courses=courseInfo)
 print(info)
 
 info = teacherApi.list()
