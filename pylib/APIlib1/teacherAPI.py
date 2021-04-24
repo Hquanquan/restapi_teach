@@ -130,6 +130,5 @@ if __name__ == '__main__':
     # print(info)
 
     teacherApi.delete_all_teacher()
-    print(info)
     teacher_info = teacherApi.list_teacher()
     print(teacher_info)

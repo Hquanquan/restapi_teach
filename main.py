@@ -5,4 +5,22 @@
 # @Author  : 黄权权
 # @Software: PyCharm
 # @Desc    : 测试入口文件
+import os
+
+import pytest
+
+def run():
+    for one in os.listdir('report/tmp'):  # 列出对应文件夹的数据
+        if 'json' in one:
+            os.remove(f'report/tmp/{one}')
+    pytest.main(["-s", "-k test_login.py ", '-s', '--alluredir=report/tmp'])
+    os.system('allure serve report/tmp')
+
+
+if __name__ == '__main__':
+
+    run()
+
+    # pytest.main(["-s", "-k test_login.py"])
+
 

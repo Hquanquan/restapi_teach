@@ -1,7 +1,7 @@
 #!/usr/bin/python3.8
 # -*- coding: utf-8 -*-
 # @Time    : 2021/4/10 14:07
-# @File : utils_string.py 
+# @File : string_tools.py
 # @Author  : 黄权权
 # @Software: PyCharm
 # @Desc    : None

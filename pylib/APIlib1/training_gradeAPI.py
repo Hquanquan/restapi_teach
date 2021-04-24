@@ -16,7 +16,7 @@ class TrainingGradeAPI:
     培训班期管理API
     """
 
-    def __init__(self,cookie):
+    def __init__(self, cookie):
         # 请求头添加cookie
         self.header = {"Cookie": cookie}
 
@@ -103,14 +103,14 @@ if __name__ == '__main__':
     print(info)
 
     # ==================添加培训班期===================
-    # indate = {
-    #     "name": "语文培训班2期",
-    #     "desc": "语文培训班2期",
-    #     "display_idx": 2,
-    #     "training_id": training_id
-    # }
-    # info = trainingGradeAPI.add_training_grade(indate)
-    # print(info)
+    indate = {
+        "name": "语文培训班2期",
+        "desc": "语文培训班2期",
+        "display_idx": 2,
+        "training_id": training_id
+    }
+    info = trainingGradeAPI.add_training_grade(indate)
+    print(info)
 
     # ==============编辑培训班期================
     # training_grade_id = trainingGradeAPI.list_training_grade()["retlist"][0]["id"]
@@ -132,9 +132,9 @@ if __name__ == '__main__':
     # print(info)
 
     # =================== 批量删除培训班期 ================
-    trainingGradeAPI.delete_all_training_grade()
-    info = trainingGradeAPI.list_training_grade()
-    print(info)
+    # trainingGradeAPI.delete_all_training_grade()
+    # info = trainingGradeAPI.list_training_grade()
+    # print(info)
 
 
 

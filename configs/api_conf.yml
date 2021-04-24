@@ -52,12 +52,57 @@ TeacherAPI:
             "courses":[],
       }
   }
-  edit: {}
+  edit: {
+      "action": "modify_teacher",
+      "id": "teacher_id",
+      "newdata": {
+              "username": "newname",
+              "password": "newpassword",
+              "realname": "newrealname",
+              "desc": "描述修改老师字段",
+              "display_idx": 100,
+              "courses": [],
+      }
+  }
   list: {
       "action": "list_teacher",
       "pagenum": 1,
       "pagesize": 20
   }
-  delete: {}
+  delete: {
+        "action": "delete_teacher",
+        "id": "teacher_id"
+  }
 
+# 培训班接口数据模板
+TrainingAPI:
+  path: "/api/mgr/sq_mgr/"
+  add: {
+      "action": "add_training",
+      "data":{
+            "name": "培训班名字",
+            "desc": "培训班描述",
+            "display_idx": 100,
+            "courselist":[]
+      }
+  }
+  edit: {
+      "action": "modify_training",
+      "id": 123,
+      "newdata": {
+              "name": "新培训班名字",
+              "desc": "培训班新描述",
+              "display_idx": 10,
+              "courselist": [],
+      }
+  }
+  list: {
+      "action": "list_training",
+      "pagenum": 1,
+      "pagesize": 20
+  }
+  delete: {
+        "action": "delete_training",
+        "id": "training_id"
+  }
 

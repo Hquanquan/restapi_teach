@@ -9,3 +9,7 @@
 # api测试的url
 HOST = "http://localhost"
 
+# 测试文件的相对路径
+TestCaseFilePath = "./data/教管系统接口测试用例.xls"
+
+

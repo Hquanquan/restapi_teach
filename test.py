@@ -19,14 +19,15 @@ from pylib.APIlib.baseAPI import BaseAPI
 from pylib.APIlib.courseAPI import CourseAPI
 from pylib.APIlib.loginAPI import LoginAPI
 from pylib.APIlib.teacherAPI import TeacherAPI
+from pylib.APIlib.trainingAPI import TrainingAPI
 
 cookie = LoginAPI().login001("auto", "sdfsdfsdf")
 
 # ===============测试CourseAPI==============
 
-courseAPI = CourseAPI(cookie)
-info = courseAPI.add(name="大学高数")
-print(info)
+# courseAPI = CourseAPI(cookie)
+# info = courseAPI.add(name="大学高数")
+# print(info)
 # course_id = courseAPI.list()["retlist"][0]["id"]
 # print(course_id)
 # info = courseAPI.edit(course_id, name="newname3")
@@ -43,23 +44,87 @@ print(info)
 
 # ===================测试TeacherAPI=============
 # 获取cookie
-teacherApi = TeacherAPI(cookie)
+# teacherApi = TeacherAPI(cookie)
 
 # =======================列出教师=============
-info = teacherApi.list()
-print(info)
+# info = teacherApi.list()
+# print(info)
 
 # ================== 添加教师 ==============
-coursesInfo = courseAPI.list()["retlist"]
-courseInfo = []
-for course in coursesInfo:
-    course_dict = {"id": course["id"], "name": course["name"]}
-    courseInfo.append(course_dict)
+# coursesInfo = courseAPI.list()["retlist"]
+# courseInfo = []
+# for course in coursesInfo:
+#     course_dict = {"id": course["id"], "name": course["name"]}
+#     courseInfo.append(course_dict)
+
+# 添加
+# info = teacherApi.add(username="9527-*1*", realname="9527-**", courses=courseInfo)
+# print(info)
+#
+# info = teacherApi.list()
+# print(info)
+
+# 删除
+# teacher_id = teacherApi.list()["retlist"][0]["id"]
+# info = teacherApi.delete(teacher_id)
+# print(info)
+# info = teacherApi.list()
+# print(info)
+
+# 修改
+# teacher_id = teacherApi.list()["retlist"][0]["id"]
+# info = teacherApi.edit(teacher_id,
+#                        username="历史老师",
+#                        password="123456",
+#                        realname="李政",
+#                        courses=courseInfo)
+#
+# info = teacherApi.list()
+# print(info)
+
+# =================培训班=====================
+#
+# coursesInfo = courseAPI.list()["retlist"]
+# coursesInfo = courseAPI.list()["retlist"]
+# courseInfo = []
+# for course in coursesInfo:
+#     course_dict = {"id": course["id"], "name": course["name"]}
+#     courseInfo.append(course_dict)
+#
+# courseList = [courseInfo[0]]
+#
+#
+# trainingAPI = TrainingAPI(cookie)
+# # 列出培训班
+# info = trainingAPI.list()
+# print(info)
+#
+# # 添加培训班
+# info = trainingAPI.add(name="语文培训22班",
+#                        desc="语文培训班22",
+#                        display_idx=102,
+#                        courselist=courseList)
+# print(info)
+#
+# info = trainingAPI.list()
+# print(info)
 
 
-info = teacherApi.add(username="9527-*1*", realname="9527-**", courses=courseInfo)
-print(info)
+# 修改培训班
+# training_id = trainingAPI.list()["retlist"][0]["id"]
+#
+# info = trainingAPI.edit(training_id,
+#                         name="语文培训3班",
+#                         desc="语文培训班3",
+#                         display_idx=102,
+#                         courselist=[])
+# print(info)
 
-info = teacherApi.list()
-print(info)
+
+
+# info = trainingAPI.delete(training_id)
+# print(info)
+#
+# print(trainingAPI.list())
+
 

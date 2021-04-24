@@ -15,7 +15,8 @@ class LoginAPI:
     登录接口
     """
 
-    def login002(self, inData):
+    @staticmethod
+    def login002(inData):
         """
         登录方法
         :param inData:  字典类型的参数，如：{"username": username, "password": password}
@@ -38,7 +39,8 @@ class LoginAPI:
         inData = {"username": username, "password": password}
         payload = inData
         resp = requests.post(url, data=payload)
-        return resp.headers['Set-Cookie'].split(";")[0]
+        # return resp.headers['Set-Cookie'].split(";")[0]
+        return resp.json()
 
     @staticmethod
     def logout():
@@ -52,14 +54,14 @@ class LoginAPI:
 
 
 if __name__ == '__main__':
-    loginInfo = LoginAPI().login001("auto", "sdfsdfsdf")
+    loginInfo = LoginAPI().login001("auto", "")
     print(loginInfo)
 
     # inData1 = {"username": "auto", "password": "sdfsdfsdf"}
     # loginInfo = LoginAPI().login002(inData1)
     # print(loginInfo)
-    info = LoginAPI().logout()
-    print(info)
+    # info = LoginAPI().logout()
+    # print(info)
 
 
 

@@ -107,12 +107,12 @@ if __name__ == '__main__':
         course_dict = {"id": course["id"], "name": course["name"]}
         courseInfo.append(course_dict)
 
-    courseList = [courseInfo[1]]
+    courseList = [courseInfo[0]]
 
     inData = {
-        "name": "语文培训1班",
+        "name": "语文培训11班",
         "desc": "描述：语文培训班",
-        "display_idx": "1"
+        "display_idx": "11"
     }
 
     info = trainingAPI.add_training(inData, courseList)
@@ -129,8 +129,8 @@ if __name__ == '__main__':
     # print(info)
     # trainingAPI.delete_all_training()
     #
-    info = trainingAPI.list_training()
-    print(info)
+    # info = trainingAPI.list_training()
+    # print(info)
 
     # ============== 编辑培训班 ================
     # trainings_info = trainingAPI.list_training()
