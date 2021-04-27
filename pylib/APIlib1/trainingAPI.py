@@ -20,11 +20,22 @@ class TrainingAPI:
     def __init__(self, cookie):
         self.header = {'Cookie': cookie}
 
+    def add(self, inDate):
+        url = f"{HOST}/api/mgr/sq_mgr/"
+        payload = inDate
+        resp = requests.post(url, headers=self.header, data=payload)
+        return resp.json()
+
     def add_training(self, inData, courseList):
         """
         添加培训班，与课程关联
         :param inData:
-        :param courseList:
+                inData = {
+                        "name": "语文培训11班",
+                        "desc": "描述：语文培训班",
+                        "display_idx": "11"
+                }
+        :param courseList:  课程信息
         :return:
         """
         url = f"{HOST}/api/mgr/sq_mgr/"
@@ -96,6 +107,7 @@ class TrainingAPI:
 
 
 if __name__ == '__main__':
+
     # 获取cookie
     cookie = LoginAPI().login001("auto", "sdfsdfsdf")
     trainingAPI = TrainingAPI(cookie)
@@ -103,20 +115,26 @@ if __name__ == '__main__':
     # ===============添加培训班==========================
     coursesInfo = course.list_course()["retlist"]
     courseInfo = []
+    i = 0
     for course in coursesInfo:
         course_dict = {"id": course["id"], "name": course["name"]}
         courseInfo.append(course_dict)
+        i = i + 1
+        if i == 3:
+            break
 
-    courseList = [courseInfo[0]]
+    courseList = json.dumps(courseInfo, ensure_ascii=False)
+    print(courseList)
 
     inData = {
-        "name": "语文培训11班",
-        "desc": "描述：语文培训班",
-        "display_idx": "11"
+        "name": "小学培训班",
+        "desc": "小学培训班描述",
+        "display_idx": 2
     }
 
     info = trainingAPI.add_training(inData, courseList)
     print(info)
+
 
     # =========== 删除单一培训班=============
     # info = trainingAPI.list_training()

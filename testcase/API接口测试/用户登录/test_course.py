@@ -51,7 +51,6 @@ class TestCourseAPI:
         # 断言：返回结果retcode=0 and id 不为空
         assert self.new_course["retcode"] == 0 and self.new_course["id"] is not None
 
-
     def test_update_Course(self):
         pass
 
