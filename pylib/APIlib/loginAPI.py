@@ -39,8 +39,8 @@ class LoginAPI:
         inData = {"username": username, "password": password}
         payload = inData
         resp = requests.post(url, data=payload)
-        # return resp.headers['Set-Cookie'].split(";")[0]
-        return resp.json()
+        return resp.headers['Set-Cookie'].split(";")[0]
+        # return resp.json()
 
     @staticmethod
     def logout():
@@ -54,7 +54,7 @@ class LoginAPI:
 
 
 if __name__ == '__main__':
-    loginInfo = LoginAPI().login001("auto", "")
+    loginInfo = LoginAPI().login001("auto", "sdfsdfsdf")
     print(loginInfo)
 
     # inData1 = {"username": "auto", "password": "sdfsdfsdf"}

@@ -15,6 +15,8 @@
 
 
 # =============测试BaseAPI类==================
+import json
+
 from pylib.APIlib.baseAPI import BaseAPI
 from pylib.APIlib.courseAPI import CourseAPI
 from pylib.APIlib.loginAPI import LoginAPI
@@ -25,7 +27,10 @@ cookie = LoginAPI().login001("auto", "sdfsdfsdf")
 
 # ===============测试CourseAPI==============
 
-# courseAPI = CourseAPI(cookie)
+courseAPI = CourseAPI(cookie)
+b = courseAPI.list(pagenum=1, pagesize=100)
+print(json.dumps(b, ensure_ascii=False))
+
 # info = courseAPI.add(name="大学高数")
 # print(info)
 # course_id = courseAPI.list()["retlist"][0]["id"]
@@ -127,4 +132,7 @@ cookie = LoginAPI().login001("auto", "sdfsdfsdf")
 #
 # print(trainingAPI.list())
 
+# b = {'retcode': 0, 'retlist': [{'id': 2160, 'name': '大学英语158973986548', 'desc': '大学英语课程', 'display_idx': 0}], 'total': 16}
+# c = json.dumps(b, ensure_ascii=False)
+# print(type(c))
 

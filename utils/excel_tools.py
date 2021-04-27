@@ -38,4 +38,7 @@ def get_excelDataByCaseName(sheetName, caseName, filePath=TestCaseFilePath):
     return resList
 
 
-    pass
+if __name__ == '__main__':
+    data = get_excelDataByCaseName("登录模块", "Login", "../data/教管系统接口测试用例.xls")
+    for one in data:
+        print(one[0]["username"])
