@@ -79,14 +79,96 @@ class TestCourseAPI:
         yield
         self.courseAPI.delete(self.course["id"])
 
-    @allure.story("课程管理-编辑更新课程")
+    @allure.story("课程管理-修改课程")
     @allure.title("修改课程所有信息，课程名不重复")
-    @pytest.mark.updateCourse
+    # @pytest.mark.updateCourse
     def test_update_Course001(self, before_test_update_Course001):
+        """
+        修改课程所有信息，课程名不重复，预期结果修改成功
+        :param before_test_update_Course001:
+        :return:
+        """
         resp = self.courseAPI.edit(self.course["id"],
-                                   name="数学",
+                                   name="高中物理课",
                                    desc="高中物理课描述",
                                    display_idx=3)
+        assert resp["retcode"] == 0
+
+    @pytest.fixture()
+    def before_test_update_Courese(self, init_course):
+        self.courseAPI = init_course[0]
+        self.course = init_course[1]
+        self.new_course = self.courseAPI.add(name="数学课",
+                                             desc="初中数学",
+                                             display_idx=5)
+        yield
+        self.courseAPI.delete(self.course["id"])
+        self.courseAPI.delete(self.new_course["id"])
+
+    @allure.story("课程管理-修改课程")
+    @allure.title("修改重复的课程名，其他随意")
+    # @pytest.mark.skip("暂不执行")
+    @pytest.mark.updateCourse
+    def test_update_Course002(self, before_test_update_Courese):
+        """
+        修改课程名称为系统已存在的课程名，其他随意，预期结果修改失败.接口报500
+        :param before_test_update_Courese:
+        :return:
+        """
+        resp = self.courseAPI.edit(self.course["id"],
+                                   name="数学课",
+                                   desc="高中数学",
+                                   display_idx=5)
+        print(resp)
         assert resp["retcode"] == 9999
 
+    @allure.story("课程管理-修改课程")
+    @allure.title("以不存在的课程id去修改课程")
+    @pytest.mark.updateCourse
+    def test_update_Course003(self, init_course):
+        """
+        修改课程，以不存在的课程id去修改课程，预期结果修改失败
+        :param init_course:
+        :return:
+        """
+        self.courseAPI = init_course[0]
+        resp = self.courseAPI.edit("courseID",
+                                   name="数学课",
+                                   desc="高中数学",
+                                   display_idx=5)
+        print(resp)
+        assert resp["retcode"] == 9999
 
+    @allure.story("课程管理-删除课程")
+    @allure.title("正常删除系统中已存在的课程")
+    @pytest.mark.deleteCourse
+    def test_delete_course001(self, init_course):
+        """
+        删除系统中已存在的课程
+        :param init_course:
+        :return:
+        """
+        self.courseAPI = init_course[0]
+        course = init_course[1]
+        resp = self.courseAPI.delete(course["id"])
+        assert resp["retcode"] == 0
+
+    @allure.story("课程管理-删除课程")
+    @allure.title("删除系统中不存在的课程")
+    @pytest.mark.deleteCourse
+    def test_delete_course002(self, init_course):
+        """
+        删除系统中不存在的课程,课程id不存在，预期结果删除失败
+        :param init_course:
+        :return:
+        """
+        self.courseAPI = init_course[0]
+        resp = self.courseAPI.delete("02135558455")
+        assert resp["retcode"] == 9999
+
+    @allure.story("课程管理-删除课程")
+    @allure.title("删除系统中不存在的课程")
+    @pytest.mark.deleteCourse
+    def test_delete_Course003(self):
+
+        pass
