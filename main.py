@@ -21,6 +21,8 @@ if __name__ == '__main__':
 
     # run()
 
-    pytest.main(["-s", "-k test_course.py"])
+    # pytest.main(["-s", "-k test_courses.py"])
+    # pytest.main(["-s", "-m", "updateCourse", '-s', '--alluredir=report/tmp'])
+    pytest.main(["-s", "-m", "updateCourse"])
 
 

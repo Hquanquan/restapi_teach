@@ -38,6 +38,7 @@ class TestCourseAPI:
         yield
         self.courseAPI.delete(self.new_course["id"])
 
+    @pytest.mark.addCourse
     @allure.story("课程管理-添加课程")
     @allure.title("当前系统没有课程，正常添加课程")
     def test_add_Course001(self, before_test_add_Course001):
@@ -51,11 +52,6 @@ class TestCourseAPI:
         # 断言：返回结果retcode=0 and id 不为空
         assert self.new_course["retcode"] == 0 and self.new_course["id"] is not None
 
-    def test_update_Course(self):
-        pass
-
-    def test_delete_Course(self):
-        pass
 
 
 

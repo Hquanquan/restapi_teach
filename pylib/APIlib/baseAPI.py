@@ -5,6 +5,7 @@
 # @Author  : 黄权权
 # @Software: PyCharm
 # @Desc    : API基类，实现基本的CRUD增删改查功能，用于被业务api类继承
+import copy
 import json
 
 from configs.api_env import HOST
@@ -35,8 +36,10 @@ class BaseAPI:
         :param kwargs: 字典类型的参数
         :return:
         """
-        # 读取配置文件模板中-add的内容
-        data = self.conf["add"]
+        # # 读取配置文件模板中-add的内容
+        # data = self.conf["add"]   这样读取会有问题两者公用同一内存地址
+        # 深度拷贝，避免data与self.cong["add"]共用对同一地址
+        data = copy.deepcopy(self.conf["add"])
         # 判断data字典是否为空，不为空则执行下面的语句。为空则跳过
         if bool(data):
             # 把字典类型的参数更新到data中
@@ -49,7 +52,7 @@ class BaseAPI:
         if resp.status_code == 200:
             return resp.json()
         else:
-            return "接口返回错误!!!"
+            return {"retcode": 9999, "message": "接口返回错误!!!"}
 
     def list(self, **kwargs):
         """
@@ -58,7 +61,7 @@ class BaseAPI:
         :return:
         """
         # 读取yaml文件模板中-list的内容
-        data = self.conf["list"]
+        data = copy.deepcopy(self.conf["list"])
         # 把kwargs的内容更新到data字典中
         data.update(kwargs)
         payload = data
@@ -67,7 +70,7 @@ class BaseAPI:
         if resp.status_code == 200:
             return resp.json()
         else:
-            return "接口返回错误!!!"
+            return {"retcode": 9999, "message": "接口返回错误!!!"}
 
     def edit(self, _id, **kwargs):
         """
@@ -77,7 +80,7 @@ class BaseAPI:
         :return:
         """
         # 读取yaml文件模板中-edit的内容
-        data = self.conf["edit"]
+        data = copy.deepcopy(self.conf["edit"])
         # 判断data字典是否为空，不为空则执行下面的语句。为空则跳过
         if bool(data):
             # 把kwargs的内容更新到data字典中的newdata字典中
@@ -92,7 +95,7 @@ class BaseAPI:
         if resp.status_code == 200:
             return resp.json()
         else:
-            return "接口返回错误!!!"
+            return {"retcode": 9999, "message": "接口返回错误!!!"}
 
     def delete(self, _id):
         """
@@ -101,7 +104,7 @@ class BaseAPI:
         :return:
         """
         # 读取yaml文件模板中-delete的内容
-        data = self.conf["delete"]
+        data = copy.deepcopy(self.conf["delete"])
         # 更改模板中的id值
         data["id"] = _id
         payload = data
@@ -110,7 +113,7 @@ class BaseAPI:
         if resp.status_code == 200:
             return resp.json()
         else:
-            return "接口返回错误!!!"
+            return {"retcode": 9999, "message": "接口返回错误!!!"}
 
     def delete_all(self, **kwargs):
         """

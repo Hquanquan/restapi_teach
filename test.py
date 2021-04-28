@@ -28,7 +28,16 @@ cookie = LoginAPI().login001("auto", "sdfsdfsdf")
 # ===============测试CourseAPI==============
 
 courseAPI = CourseAPI(cookie)
-b = courseAPI.list(pagenum=1, pagesize=100)
+info1 = courseAPI.add(name="asdfasd")
+print(info1)
+print("+++++++++++++++++++++++++++")
+info2 = courseAPI.add(name="asdfgsdgsd")
+print(info2)
+# b = courseAPI.list(pagenum=1, pagesize=100)
+
+
+
+
 # print(json.dumps(b, ensure_ascii=False))
 
 
@@ -91,32 +100,32 @@ b = courseAPI.list(pagenum=1, pagesize=100)
 
 # =================培训班=====================
 
-coursesInfo = courseAPI.list()["retlist"]
-courseInfo = []
-i = 0
-for course in coursesInfo:
-    course_dict = {"id": course["id"], "name": course["name"]}
-    courseInfo.append(course_dict)
-    i = i + 1
-    if i == 3:
-        break
-# 非常关键，把列表转换换json字符串
-courseList = json.dumps(courseInfo, ensure_ascii=False)
-print(courseList)
-
-
-trainingAPI = TrainingAPI(cookie)
+# coursesInfo = courseAPI.list()["retlist"]
+# courseInfo = []
+# i = 0
+# for course in coursesInfo:
+#     course_dict = {"id": course["id"], "name": course["name"]}
+#     courseInfo.append(course_dict)
+#     i = i + 1
+#     if i == 3:
+#         break
+# # 非常关键，把列表转换换json字符串
+# courseList = json.dumps(courseInfo, ensure_ascii=False)
+# print(courseList)
+#
+#
+# trainingAPI = TrainingAPI(cookie)
 
 # # 列出培训班
 # info = trainingAPI.list()
 # print(info)
 
-# 添加培训班
-info = trainingAPI.add(name="语文培训22班",
-                       desc="语文培训班22",
-                       display_idx=102,
-                       courselist=courseList)
-print(info)
+# # 添加培训班
+# info = trainingAPI.add(name="语文培训22班",
+#                        desc="语文培训班22",
+#                        display_idx=102,
+#                        courselist=courseList)
+# print(info)
 
 
 # 修改培训班

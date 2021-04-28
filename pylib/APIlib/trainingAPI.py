@@ -5,6 +5,7 @@
 # @Author  : 黄权权
 # @Software: PyCharm
 # @Desc    : 培训班API类
+import copy
 import json
 
 import requests
@@ -20,7 +21,9 @@ class TrainingAPI(BaseAPI):
         :return:
         """
         # 读取配置文件模板中-add的内容
-        data = self.conf["add"]
+        # data = self.conf["add"]
+        # 深度拷贝，避免data与self.cong["add"]共用对同一地址
+        data = copy.deepcopy(self.conf["add"])
         # 判断data字典是否为空，不为空则执行下面的语句。为空则跳过
         if bool(data):
             # 把字典类型的参数更新到data中
@@ -28,8 +31,6 @@ class TrainingAPI(BaseAPI):
             # 把data["data"]字典转换成json字符串
             data["data"] = json.dumps(data["data"], ensure_ascii=False)
         payload = data
-        print("="*100)
-        print(payload)
         url = self.host + self.path
         resp = requests.post(url, data=payload, headers=self.header)
         if resp.status_code == 200:

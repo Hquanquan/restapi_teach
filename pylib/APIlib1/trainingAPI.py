@@ -122,7 +122,7 @@ if __name__ == '__main__':
         i = i + 1
         if i == 3:
             break
-
+    # 非常关键，把列表转换换json字符串
     courseList = json.dumps(courseInfo, ensure_ascii=False)
     print(courseList)
 
