@@ -27,15 +27,12 @@ cookie = LoginAPI().login001("auto", "sdfsdfsdf")
 
 # ===============测试CourseAPI==============
 
-courseAPI = CourseAPI(cookie)
-info1 = courseAPI.add(name="asdfasd")
-print(info1)
-print("+++++++++++++++++++++++++++")
-info2 = courseAPI.add(name="asdfgsdgsd")
-print(info2)
-# b = courseAPI.list(pagenum=1, pagesize=100)
+# courseAPI = CourseAPI(cookie)
+# id = courseAPI.list()["retlist"][0]["id"]
+# info = courseAPI.edit(id, name="2", desc="22")
+# print(info)
 
-
+# print(courseAPI.delete("459999"))
 
 
 # print(json.dumps(b, ensure_ascii=False))
@@ -60,8 +57,13 @@ print(info2)
 
 # ===================测试TeacherAPI=============
 # 获取cookie
-# teacherApi = TeacherAPI(cookie)
+teacherApi = TeacherAPI(cookie)
+info = teacherApi.list()["retlist"]
+print(info)
+info = teacherApi.list()["retlist"][0]["id"]
 
+response = teacherApi.edit(info, username="数学老师", realname="李三")
+print(response)
 # =======================列出教师=============
 # info = teacherApi.list()
 # print(info)

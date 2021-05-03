@@ -9,6 +9,8 @@ import allure
 import pytest
 
 
+@allure.epic("教管系统-接口测试")
+@allure.feature("课程管理模块")
 class TestCourseAPI:
     """
     课程API测试

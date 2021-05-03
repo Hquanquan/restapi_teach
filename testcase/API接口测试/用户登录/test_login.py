@@ -27,9 +27,8 @@ class TestLoginAPI:
         :param respDate:
         :return:
         """
-        print(inData)
-        # resp = LoginAPI().login002(inData)
-        # assert resp == respDate
+        resp = LoginAPI().login002(inData)
+        assert resp == respDate
 
     # @pytest.mark.skip("暂不执行")
     @allure.title("退出登录")

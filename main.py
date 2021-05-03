@@ -14,17 +14,15 @@ def run():
         if 'json' in one:
             os.remove(f'report/tmp/{one}')
     pytest.main(['testcase/API接口测试', '-s', '--alluredir=report/tmp'])
+    # pytest.main(['-k test_courses.py', '-s', '--alluredir=report/tmp'])
     os.system('allure serve report/tmp')
 
 
 if __name__ == '__main__':
 
-    # run()
-
-    # # pytest.main(["-s", "-k test_courses.py"])
-    # pytest.main(["-s", "-m", "deleteCourse", '-s', '--alluredir=report/tmp'])
-    # os.system('allure serve report/tmp')
-    pytest.main(["-s", "-m", "deleteCourse"])
+    run()
+    # pytest.main(["-s", "-k test_teachers.py"])
+    # pytest.main(["-s", "-m", "updateCourse"])
 
 
 
