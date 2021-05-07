@@ -106,3 +106,33 @@ TrainingAPI:
         "id": "training_id"
   }
 
+TrainingGradeAPI:
+  path: "/api/mgr/sq_mgr/"
+  add: {
+      "action": "add_training_grade",
+      "data": {
+            "name": "培训班期名称",
+            "desc": "培训班期描述",
+            "display_idx": 20,
+            "training_id": "training_id"
+      }
+  }
+  list: {
+      "action": "list_training_grade",
+      "pagenum": 1,
+      "pagesize": 20
+  }
+  edit: {
+      "action": "modify_training_grade",
+      "id": "training_grade_id",
+      "newdata": {
+            "name": "新培训班期名称",
+            "desc": "新培训班期描述",
+            "display_idx": 20,
+             "training_id": ""
+      }
+  }
+  delete: {
+        "action": "delete_training_grade",
+        "id": "training_grade_id"
+  }

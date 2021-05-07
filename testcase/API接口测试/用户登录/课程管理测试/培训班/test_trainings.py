@@ -46,6 +46,22 @@ class TestTrainingAPI:
                                      desc="语文培训班3",
                                      display_idx=103,
                                      courselist=[])
-        print(resp)
-        input()
-        pass
+        assert resp["retcode"] == 0
+
+    @pytest.fixture()
+    def before_test_delete_training(self, init_training):
+        self.trainingAPI = init_training[0]
+        self.training_id = self.trainingAPI.list()["retlist"][0]["id"]
+
+
+    @allure.story("培训班管理-删除培训班")
+    @allure.title("删除培训班")
+    @pytest.mark.deleteTraining
+    def test_delete_training(self, before_test_delete_training):
+        """
+        删除培训班
+        :return:
+        """
+        resp = self.trainingAPI.delete(self.training_id)
+        assert resp["retcode"] == 0
+
