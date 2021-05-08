@@ -136,3 +136,36 @@ TrainingGradeAPI:
         "action": "delete_training_grade",
         "id": "training_grade_id"
   }
+
+LessonAPI:
+  path: "/api/mgr/sq_mgr/"
+  add: {
+      "action": "add_lesson",
+      "data": {
+            "course_id": "course_id",
+            "starttime": "2021-04-10T16:00:00.000Z",
+            "endtime": "2023-12-31T23:00:00.000Z",
+            "desc": "课时描述"
+      }
+  }
+  list: {
+      "action": "list_lesson",
+      "pagenum": 1,
+      "pagesize": 20
+  }
+  edit: {
+      "action": "modify_lesson",
+      "id": "lesson_id",
+      "newdata": {
+                "course_id": "course_id",
+                "starttime": "2021-04-10T16:00:00.000Z",
+                "endtime": "2021-04-24T16:00:00.000Z",
+                "desc": "英文课时1"
+      }
+  }
+  delete: {
+        "action": "delete_lesson",
+        "id": "lesson_id"
+  }
+
+

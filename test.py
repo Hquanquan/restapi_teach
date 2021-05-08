@@ -101,7 +101,7 @@ print(courseAPI.delete("2402"))
 # info = teacherApi.list()
 # print(info)
 
-# =================培训班=====================
+# =================培训班管理测试=====================
 
 # coursesInfo = courseAPI.list()["retlist"]
 # courseInfo = []
