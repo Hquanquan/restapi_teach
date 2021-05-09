@@ -168,4 +168,48 @@ LessonAPI:
         "id": "lesson_id"
   }
 
+StudentAPI:
+  path: "/api/mgr/sq_mgr/"
+  add: {
+      "action": "add_student",
+      "data": {
+            "username": "学生名字",
+            "realname": "学生真实名字",
+            "desc": "学生信息描述",
+            "password": "123456",
+            "startcoursedate": "2021-02-15T07:50:53.345Z",
+            "training_id": "training_id",
+            "traininggrade_id": "traininggrade_id"
+      }
+  }
+  edit: {
+      "action": "modify_student",
+      "id": "student_id",
+      "newdata": {
+              "username": "学生新名字",
+              "realname": "真实新名字",
+              "desc": "学生新信息",
+              "password": "123456",
+              "startcoursedate": "2021-04-12T07:50:53.345Z",
+              "graduated": True,
+              "training_id": "training_id",
+              "traininggrade_id": "traininggrade_id"
+      }
+
+  }
+  list: {
+      "action": "list_student",
+      "pagenum": 1,
+      "pagesize": 20
+  }
+  delete: {
+        "action": "delete_student",
+        "id": "student_id"
+  }
+  updatePassword: {
+                "action": "changeuserpassword",
+                "uid": "uid"
+  }
+
+
 
