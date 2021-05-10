@@ -47,8 +47,12 @@ class TestLenssonAPI:
     @allure.story("课时管理-列出课时")
     @allure.title("列出课时")
     def test_list_lesson(self, after_test_list_lesson):
+        """
+        列出课时
+        :param after_test_list_lesson:
+        :return:
+        """
         resp = self.lessonAPI.list()
-        print(resp)
         assert resp["retcode"] == 0 and resp["total"] != 0
 
     @pytest.fixture()
@@ -63,8 +67,11 @@ class TestLenssonAPI:
     @allure.story("课时管理-编辑修改课时")
     @allure.title("编辑修改课时")
     def test_edit_lesson(self, before_test_edit_lesson):
-        print(self.lesson_id)
-        print(self.course_id)
+        """
+        编辑修改课时
+        :param before_test_edit_lesson:
+        :return:
+        """
         resp = self.lessonAPI.edit(self.lesson_id,
                                    course_id=self.course_id,
                                    starttime=get_CurrentTime(),
@@ -83,6 +90,11 @@ class TestLenssonAPI:
     @allure.story("课时管理-删除课时")
     @allure.title("删除课时")
     def test_delete_lesson(self, before_test_delete_lesson):
+        """
+        删除课时
+        :param before_test_delete_lesson:
+        :return:
+        """
         resp = self.lessonAPI.delete(self.lesson_id)
         assert resp["retcode"] == 0
 

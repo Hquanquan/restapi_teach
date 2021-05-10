@@ -20,9 +20,9 @@ def run():
 
 if __name__ == '__main__':
 
-    # run()
-    # pytest.main(["-s", "-k test_teachers.py"])
-    pytest.main(["-s", "-m", "deleteLesson"])
+    run()
+    # pytest.main(["-s", "-k test_student.py"])
+    # pytest.main(["-s", "-m", "deleteLesson"])
 
 
 

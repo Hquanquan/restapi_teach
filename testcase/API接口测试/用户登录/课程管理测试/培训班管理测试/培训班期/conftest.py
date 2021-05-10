@@ -16,7 +16,7 @@ def get_trainingGradeAPI(get_cookie):
     return trainingGradeAPI
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture()
 def init_trainingGrade(get_cookie, init_training):
     trainingGradeAPI = TrainingGradeAPI(get_cookie)
     trainingAPI = init_training[0]

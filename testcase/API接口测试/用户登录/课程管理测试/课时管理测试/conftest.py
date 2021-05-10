@@ -11,7 +11,7 @@ from pylib.APIlib.lessonAPI import LessonAPI
 from utils.time_tools import get_CurrentTime
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture()
 def init_lesson(get_cookie, init_course):
     lessonAPI = LessonAPI(get_cookie)
     courseAPI = init_course[0]

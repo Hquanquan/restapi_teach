@@ -12,7 +12,7 @@ import pytest
 from pylib.APIlib.trainingAPI import TrainingAPI
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture()
 def init_training(get_cookie, init_course):
     """
     初始化创建培训班
@@ -39,7 +39,6 @@ def init_training(get_cookie, init_course):
                                    display_idx=100,
                                    courselist=courseList)
     yield trainingAPI, new_training
-
 
 @pytest.fixture(scope="session")
 def get_trainingAPI(get_cookie):

@@ -17,7 +17,7 @@ class TestTrainingAPI:
     def after_test_list_training(self, init_training):
         self.trainingAPI = init_training[0]
         yield
-        self.trainingAPI.delete_all()
+        self.trainingAPI.delete(self.training_id)
 
     @allure.story("培训班管理-列出培训班")
     @allure.title("列出培训班")
@@ -28,30 +28,38 @@ class TestTrainingAPI:
         :return:
         """
         resp = self.trainingAPI.list()
+        self.training_id = self.trainingAPI.list()["retlist"][0]["id"]
         assert resp["retcode"] == 0 and resp["total"] != 0
 
     @pytest.fixture()
-    def before_test_update_training(self, init_training):
+    def before_test_update_training(self, init_training, init_course):
         self.trainingAPI = init_training[0]
         self.training_id = self.trainingAPI.list()["retlist"][0]["id"]
         yield
-        self.trainingAPI.delete_all()
+        self.trainingAPI.delete(self.training_id)
 
     @allure.story("培训班管理-修改培训班")
     @allure.title("修改培训班")
     @pytest.mark.editTraining
     def test_update_training(self, before_test_update_training):
+        """
+        修改培训班
+        :param before_test_update_training:
+        :return:
+        """
         resp = self.trainingAPI.edit(self.training_id,
                                      name="语文培训3班",
                                      desc="语文培训班3",
                                      display_idx=103,
-                                     courselist=[])
+                                     courselist=[]
+                                     )
         assert resp["retcode"] == 0
 
     @pytest.fixture()
     def before_test_delete_training(self, init_training):
         self.trainingAPI = init_training[0]
         self.training_id = self.trainingAPI.list()["retlist"][0]["id"]
+        yield
 
 
     @allure.story("培训班管理-删除培训班")

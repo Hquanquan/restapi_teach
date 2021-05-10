@@ -21,7 +21,7 @@ def get_studentAPI(get_cookie):
     return studentAPI
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture()
 def init_student(get_cookie, init_trainingGrade):
     studentAPI = StudentAPI(get_cookie)
     trainingGradeAPI = init_trainingGrade[0]
