@@ -10,8 +10,8 @@ import allure
 import pytest
 
 
-@allure.epic()
-@allure.feature()
+@allure.epic("教管系统-接口测试")
+@allure.feature("学生管理模块")
 class TestStudentAPI:
 
     @pytest.fixture()
