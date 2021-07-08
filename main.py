@@ -21,7 +21,7 @@ def run():
 if __name__ == '__main__':
 
     run()
-    # pytest.main(["-s", "-k test_student.py"])
+    # pytest.main(["-s", "-k test_course.py"])
     # pytest.main(["-s", "-m", "deleteLesson"])
 
 
