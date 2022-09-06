@@ -8,12 +8,16 @@
 import allure
 import pytest
 
+
 @allure.epic("教管系统-接口测试")
 @allure.feature("教师管理模块")
 class TestTeacherAPI:
 
     @pytest.fixture()
     def before_test_add_teacher001(self, empty_teacher, init_course):
+        """
+        前置条件：创建课程，获取课程信息
+        """
         self.teacherAPI = empty_teacher
         self.courseAPI = init_course[0]
         courses = self.courseAPI.list()["retlist"]
@@ -22,6 +26,9 @@ class TestTeacherAPI:
             course_dict = {"id": course["id"], "name": course["name"]}
             self.courseInfo.append(course_dict)
         yield
+        """
+        后置处理：删除创建的教师
+        """
         self.teacherAPI.delete(self.new_teacher["id"])
 
     @allure.story("教师管理-添加教师")
@@ -37,7 +44,6 @@ class TestTeacherAPI:
                                                realname="王大锤",
                                                courses=self.courseInfo)
         assert self.new_teacher["retcode"] == 0
-
 
     @allure.story("教师管理-列出教师")
     @allure.title("当前没有教师，列出教师")
@@ -63,7 +69,3 @@ class TestTeacherAPI:
         self.teacherAPI = empty_teacher
         resp = self.teacherAPI.delete("5555555555")
         assert resp["retcode"] == 1 and "老师不存在" in resp["reason"]
-
-
-
-

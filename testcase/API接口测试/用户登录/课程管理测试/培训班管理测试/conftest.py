@@ -40,7 +40,3 @@ def init_training(get_cookie, init_course):
                                    courselist=courseList)
     yield trainingAPI, new_training
 
-@pytest.fixture(scope="session")
-def get_trainingAPI(get_cookie):
-    trainingAPI = TrainingAPI(get_cookie)
-    return trainingAPI

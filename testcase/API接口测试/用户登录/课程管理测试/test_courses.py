@@ -28,7 +28,6 @@ class TestCourseAPI:
         courses = self.courseAPI.list()
         assert courses["retcode"] == 0 and courses["total"] != 0
 
-
     @allure.story("课程管理-添加课程")
     @allure.title("当前已有课程，添加信息完全重复的课程")
     def test_add_Course002(self, init_course):
@@ -94,17 +93,17 @@ class TestCourseAPI:
         :return:
         """
         resp = self.courseAPI.edit(self.new_course["id"],
-                                   name="数学课",
+                                   name="物理课",
                                    desc="高中数学",
                                    display_idx=5)
-        assert resp["retcode"] == 0
+        assert resp["retcode"] == 9999
 
     @allure.story("课程管理-修改课程")
     @allure.title("以不存在的课程id去修改课程")
     @pytest.mark.updateCourse
     def test_update_Course003(self, init_course):
         """
-        修改课程，以不存在的课程id去修改课程，预期结果修改失败
+        修改课程，以不存在的课程id去修改课程，预期结果修改失败.接口报500
         :param init_course:
         :return:
         """
@@ -119,14 +118,14 @@ class TestCourseAPI:
     @allure.title("正常删除系统中已存在的课程")
     # @pytest.mark.skip("暂不执行")
     @pytest.mark.deleteCourse
-    def test_delete_course001(self, init_course_to_delete):
+    def test_delete_course001(self, init_course):
         """
         删除系统中已存在的课程
-        :param init_course_to_delete:
+        :param init_course:
         :return:
         """
-        self.courseAPI = init_course_to_delete[0]
-        course = init_course_to_delete[1]
+        self.courseAPI = init_course[0]
+        course = init_course[1]
         resp = self.courseAPI.delete(course["id"])
         assert resp["retcode"] == 0
 
@@ -134,12 +133,12 @@ class TestCourseAPI:
     @allure.title("删除系统中不存在的课程")
     @pytest.mark.deleteCourse
     # @pytest.mark.skip("暂不执行")
-    def test_delete_course002(self, init_course_to_delete):
+    def test_delete_course002(self, init_course):
         """
         删除系统中不存在的课程,课程id不存在，预期结果删除失败
-        :param init_course_to_delete:
+        :param init_course:
         :return:
         """
-        self.courseAPI = init_course_to_delete[0]
+        self.courseAPI = init_course[0]
         resp = self.courseAPI.delete("02135558455")
         assert resp["retcode"] == 0

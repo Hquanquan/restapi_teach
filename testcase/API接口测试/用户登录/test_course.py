@@ -16,6 +16,7 @@ class TestCourseAPI:
     课程API测试
     """
 
+    @pytest.mark.list_Course001
     @allure.story("课程管理-列出课程")
     @allure.title("当前系统没有课程，列出课程")
     def test_list_Course001(self, empty_course):

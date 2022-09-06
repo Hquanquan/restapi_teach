@@ -15,6 +15,9 @@ class TestTrainingGradesAPI:
 
     @pytest.fixture()
     def before_test_add_trainingGrade(self, get_trainingGradeAPI, init_training):
+        """
+        前置条件：1、初始化创建一个培训班，并获取培训班的id
+        """
         self.trainingGradeAPI = get_trainingGradeAPI
         self.trainingAPI = init_training[0]
         self.training_id = self.trainingAPI.list()["retlist"][0]["id"]
@@ -33,6 +36,9 @@ class TestTrainingGradesAPI:
 
     @pytest.fixture()
     def after_test_list_trainingGrade(self, init_trainingGrade):
+        """
+        初始化创建一个培训班期
+        """
         self.trainingGradeAPI = init_trainingGrade[0]
         yield
         self.trainingGradeAPI.delete_all()
@@ -46,6 +52,11 @@ class TestTrainingGradesAPI:
 
     @pytest.fixture()
     def before_test_update_trainingGrade(self, init_trainingGrade):
+        """
+        前置条件:
+        1、创建一个培训班，并获取其id
+        2、创建一个培训班期，并获取其id
+        """
         self.trainingGradeAPI = init_trainingGrade[0]
         self.trainingAPI = init_trainingGrade[1]
         self.training_id = self.trainingAPI.list()["retlist"][0]["id"]
@@ -54,8 +65,8 @@ class TestTrainingGradesAPI:
         self.trainingGradeAPI.delete_all()
         self.trainingAPI.delete_all()
 
-    @allure.story("培训班期管理-列出培训班期")
-    @allure.title("列出培训班期")
+    @allure.story("培训班期管理-编辑培训班期")
+    @allure.title("编辑培训班期")
     @pytest.mark.updateTrainingGrade
     def test_update_trainingGrade(self, before_test_update_trainingGrade):
         resp = self.trainingGradeAPI.edit(self.trainingGrade_id,

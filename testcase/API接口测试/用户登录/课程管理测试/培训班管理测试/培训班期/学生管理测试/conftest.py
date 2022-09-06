@@ -23,6 +23,12 @@ def get_studentAPI(get_cookie):
 
 @pytest.fixture()
 def init_student(get_cookie, init_trainingGrade):
+    """
+    初始化创建一个学生
+    前置条件：
+        1、创建一个培训班，并获取其id
+        2、创建一个培训班期，并获取其id
+    """
     studentAPI = StudentAPI(get_cookie)
     trainingGradeAPI = init_trainingGrade[0]
     trainingAPI = init_trainingGrade[1]

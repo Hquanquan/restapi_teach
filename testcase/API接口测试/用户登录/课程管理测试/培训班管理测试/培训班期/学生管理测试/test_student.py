@@ -16,6 +16,11 @@ class TestStudentAPI:
 
     @pytest.fixture()
     def before_test_add_student(self, get_studentAPI, init_trainingGrade):
+        """
+        前置条件：
+            1、创建一个培训班，并获取其id
+            2、创建一个培训班期，并获取其id
+        """
         self.studentAPI = get_studentAPI
         self.trainingGradeAPI = init_trainingGrade[0]
         self.trainingAPI = init_trainingGrade[1]
@@ -46,7 +51,6 @@ class TestStudentAPI:
         yield
         self.studentAPI.delete(self.new_student_id)
         self.trainingGradeAPI.delete_all()
-
 
     @allure.story("学生管理-列出学生")
     @allure.title("列出学生")
@@ -107,5 +111,3 @@ class TestStudentAPI:
         """
         resp = self.studentAPI.delete(self.new_student_id)
         assert resp["retcode"] == 0
-
-

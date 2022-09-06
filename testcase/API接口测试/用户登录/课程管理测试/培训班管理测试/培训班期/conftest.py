@@ -18,6 +18,7 @@ def get_trainingGradeAPI(get_cookie):
 
 @pytest.fixture()
 def init_trainingGrade(get_cookie, init_training):
+    """初始化创建一个培训班期"""
     trainingGradeAPI = TrainingGradeAPI(get_cookie)
     trainingAPI = init_training[0]
     training_id = trainingAPI.list()["retlist"][0]["id"]

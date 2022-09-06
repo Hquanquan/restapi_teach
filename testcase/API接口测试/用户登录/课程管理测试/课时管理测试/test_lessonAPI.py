@@ -1,7 +1,7 @@
 #!/usr/bin/python3.8
 # -*- coding: utf-8 -*-
 # @Time    : 2021/5/8 22:49
-# @File : test_lenssonAPI.py
+# @File : test_lessonAPI.py
 # @Author  : 黄权权
 # @Software: PyCharm
 # @Desc    : 课时管理测试
@@ -13,10 +13,14 @@ from utils.time_tools import get_CurrentTime
 
 @allure.epic("教管系统-接口测试")
 @allure.feature("课时管理模块")
-class TestLenssonAPI:
+class TestLessonAPI:
 
     @pytest.fixture()
     def before_test_add_lesson(self, get_lessonAPI, init_course):
+        """
+        前置条件：
+        1、创建一个课程
+        """
         self.lessonAPI = get_lessonAPI
         self.course_id = init_course[1]["id"]
         yield
@@ -39,6 +43,10 @@ class TestLenssonAPI:
 
     @pytest.fixture()
     def after_test_list_lesson(self, init_lesson):
+        """
+        前置条件：1、创建一个课程
+                2、创建一个课时
+        """
         self.lessonAPI = init_lesson[0]
         yield
         self.lessonAPI.delete_all()
@@ -57,6 +65,10 @@ class TestLenssonAPI:
 
     @pytest.fixture()
     def before_test_edit_lesson(self, init_lesson):
+        """
+        前置条件：1、创建一个课程，并获取其课程id
+                2、创建一个课时,并获取其课时id
+        """
         self.lessonAPI = init_lesson[0]
         self.lesson_id = self.lessonAPI.list()["retlist"][0]["id"]
         self.course_id = self.lessonAPI.list()["retlist"][0]["course_id"]

@@ -6,6 +6,8 @@
 # @Software: PyCharm
 # @Desc    : 处理yaml文件的工具
 import yaml
+
+
 def read_yaml(filePath):
     """
     读取yaml文件数据，并以字典格式返回
@@ -20,4 +22,3 @@ def read_yaml(filePath):
         data = yaml.safe_load(content)
         # 返回数据
         return data
-

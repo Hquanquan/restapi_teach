@@ -17,7 +17,8 @@ def get_cookie():
     cookie = LoginAPI().login001("auto", "sdfsdfsdf")
     return cookie
 
-@pytest.fixture(scope="session")
+
+@pytest.fixture()
 def empty_course(get_cookie):
     """
     清空课程
@@ -27,5 +28,3 @@ def empty_course(get_cookie):
     courseAPI = CourseAPI(get_cookie)
     courseAPI.delete_all()
     yield courseAPI
-
-

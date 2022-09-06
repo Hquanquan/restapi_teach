@@ -22,9 +22,5 @@ def get_CurrentTime(time_formate="%Y-%m-%dT%H:%M:%S.%f", tager=True):
     return current_time[:-3] + "Z"
 
 
-
-
 if __name__ == '__main__':
-
     print(get_CurrentTime())
-

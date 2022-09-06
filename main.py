@@ -9,6 +9,7 @@ import os
 
 import pytest
 
+
 def run():
     for one in os.listdir('report/tmp'):  # 列出对应文件夹的数据
         if 'json' in one:
@@ -19,11 +20,7 @@ def run():
 
 
 if __name__ == '__main__':
-
     run()
-    # pytest.main(["-s", "-k test_course.py"])
-    # pytest.main(["-s", "-m", "deleteLesson"])
-
-
-
-
+    # pytest.main(["-s", "-k test_teacher.py or test_courses.py or test_course.py or test_login.py "])
+    # pytest.main(["-s", "-k test_student.py "])
+    # pytest.main(["-s", "-m", "list_Course001"])

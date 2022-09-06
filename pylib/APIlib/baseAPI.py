@@ -37,7 +37,7 @@ class BaseAPI:
         :return:
         """
         # # 读取配置文件模板中-add的内容
-        # data = self.conf["add"]   这样读取会有问题两者公用同一内存地址
+        # data = self.conf["add"]   这样读取会有问题，两者公用同一内存地址
         # 深度拷贝，避免data与self.cong["add"]共用对同一地址
         data = copy.deepcopy(self.conf["add"])
         # 判断data字典是否为空，不为空则执行下面的语句。为空则跳过

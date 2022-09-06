@@ -13,7 +13,6 @@
 # print(data)
 
 
-
 # =============测试BaseAPI类==================
 import json
 
@@ -37,7 +36,6 @@ print(courseAPI.delete("2402"))
 
 
 # print(json.dumps(b, ensure_ascii=False))
-
 
 
 # info = courseAPI.add(name="大学高数")
@@ -142,7 +140,6 @@ print(courseAPI.delete("2402"))
 # print(info)
 
 
-
 # info = trainingAPI.delete(training_id)
 # print(info)
 #
@@ -151,4 +148,3 @@ print(courseAPI.delete("2402"))
 # b = {'retcode': 0, 'retlist': [{'id': 2160, 'name': '大学英语158973986548', 'desc': '大学英语课程', 'display_idx': 0}], 'total': 16}
 # c = json.dumps(b, ensure_ascii=False)
 # print(type(c))
-

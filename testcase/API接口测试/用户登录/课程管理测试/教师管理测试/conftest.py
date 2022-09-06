@@ -10,7 +10,7 @@ import pytest
 from pylib.APIlib.teacherAPI import TeacherAPI
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture()
 def init_teacher(get_cookie, init_course):
     """
     初始化创建教师
@@ -25,9 +25,7 @@ def init_teacher(get_cookie, init_course):
     new_teacher = teacherAPI.add(username="数学老师",
                                  realname="王大锤",
                                  courses=courseInfo)
-    # new_teacher = teacherAPI.add(username="数学老师",
-    #                              realname="王大锤")
     yield teacherAPI, courseAPI, new_teacher
-    # teacherAPI.delete(new_teacher["id"])
+    teacherAPI.delete(new_teacher["id"])
 
 
